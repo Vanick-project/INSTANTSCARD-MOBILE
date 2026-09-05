@@ -165,7 +165,12 @@
     "uploadHint": "JPG or PNG, max 5MB",
     "submit": "Submit for verification",
     "submitted": "Documents Submitted",
-    "submittedBody": "Verification typically completes within 1-2 business days. We'll notify you."
+    "submittedBody": "Verification typically completes within 1-2 business days. We'll notify you.",
+    "requiredTitle": "Required",
+    "requiredBody": "Please enter your document number.",
+    "consentRequiredTitle": "Consent required",
+    "consentRequiredBody": "Please agree to identity verification to continue.",
+    "consentLabel": "I authorise InstantCards and its verification provider to process my identity data to verify my identity, in line with the privacy policy."
   },
   "withdraw": {
     "title": "Withdraw",
@@ -216,6 +221,12 @@
     "INVALID_NETWORK": "That operator is not available in your country.",
     "INVALID_DESTINATION": "Invalid destination details.",
     "PAYOUT_NOT_AVAILABLE": "Cash-out is not available in your country yet.",
-    "PAYOUT_METHOD_UNAVAILABLE": "That cash-out method is not available."
+    "PAYOUT_METHOD_UNAVAILABLE": "That cash-out method is not available.",
+    "KYC_ALREADY_PENDING": "An identity check is already in progress.",
+    "KYC_ALREADY_VERIFIED": "Your identity is already verified.",
+    "INVALID_DOC_TYPE": "Unsupported document type.",
+    "INVALID_CONSENT": "The consent provided is incomplete or invalid.",
+    "CONSENT_NOT_GRANTED": "Consent is required to verify your identity.",
+    "SMILE_BAD_REQUEST": "We could not validate those details. Please check the document number."
   }
 }

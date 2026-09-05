@@ -138,8 +138,21 @@ export const api = {
   updateMe: (body: { firstName?: string; lastName?: string; email?: string }) =>
     apiClient.patch('/users/me', body),
 
-  submitKyc: (body: { docType: string; docNumber: string }) =>
-    apiClient.post('/users/kyc', body),
+  // Consent is optional at the API boundary but the server validates it
+  // strictly when present: all four fields required, granted must be true,
+  // granted_at not more than a minute in the future.
+  submitKyc: (body: {
+    docType: string;
+    docNumber: string;
+    consent?: {
+      granted: true;
+      granted_at: string;
+      notice_language: string;
+      notice_privacy_policy_url: string;
+    };
+  }) => apiClient.post('/users/kyc', body),
+
+  getKycStatus: () => apiClient.get('/users/kyc'),
 
   // ── Wallet ──────────────────────────────────────────────────────────────────
   getWallet: () =>

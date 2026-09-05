@@ -165,7 +165,12 @@
     "uploadHint": "JPG ou PNG, max 5 Mo",
     "submit": "Soumettre pour vérification",
     "submitted": "Documents soumis",
-    "submittedBody": "La vérification prend généralement 1 à 2 jours ouvrables. Nous vous notifierons."
+    "submittedBody": "La vérification prend généralement 1 à 2 jours ouvrables. Nous vous notifierons.",
+    "requiredTitle": "Requis",
+    "requiredBody": "Veuillez entrer le numéro du document.",
+    "consentRequiredTitle": "Consentement requis",
+    "consentRequiredBody": "Veuillez accepter la vérification d’identité pour continuer.",
+    "consentLabel": "J’autorise InstantCards et son prestataire de vérification à traiter mes données d’identité pour vérifier mon identité, conformément à la politique de confidentialité."
   },
   "withdraw": {
     "title": "Retrait",
@@ -216,6 +221,12 @@
     "INVALID_NETWORK": "Cet opérateur n’est pas disponible dans votre pays.",
     "INVALID_DESTINATION": "Coordonnées de destination invalides.",
     "PAYOUT_NOT_AVAILABLE": "Le retrait n’est pas encore disponible dans votre pays.",
-    "PAYOUT_METHOD_UNAVAILABLE": "Ce mode de retrait n’est pas disponible."
+    "PAYOUT_METHOD_UNAVAILABLE": "Ce mode de retrait n’est pas disponible.",
+    "KYC_ALREADY_PENDING": "Une vérification d’identité est déjà en cours.",
+    "KYC_ALREADY_VERIFIED": "Votre identité est déjà vérifiée.",
+    "INVALID_DOC_TYPE": "Type de document non pris en charge.",
+    "INVALID_CONSENT": "Le consentement fourni est incomplet ou invalide.",
+    "CONSENT_NOT_GRANTED": "Le consentement est requis pour vérifier votre identité.",
+    "SMILE_BAD_REQUEST": "Les informations fournies n’ont pas pu être validées. Vérifiez le numéro du document."
   }
 }

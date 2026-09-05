@@ -187,5 +187,8 @@ export function useRevealCard() {
 
 export function useSubmitKyc() {
   const qc = useQueryClient();
-  return useMutation({ mutationFn: (body: { docType: string; docNumber: string }) => api.submitKyc(body), onSuccess: () => qc.invalidateQueries({ queryKey: QK.me }) });
+  return useMutation({
+    mutationFn: (body: Parameters<typeof api.submitKyc>[0]) => api.submitKyc(body),
+    onSuccess: () => qc.invalidateQueries({ queryKey: QK.me }),
+  });
 }
