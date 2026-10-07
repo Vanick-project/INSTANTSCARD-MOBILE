@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.brand,
     alignItems: 'center', justifyContent: 'center',
   },
-  avatarText: { fontSize: FontSizes.md, fontWeight: FontWeights.bold, color: Colors.bg },
+  avatarText: { fontSize: FontSizes.md, fontWeight: FontWeights.bold, color: Colors.brandOnBrand },
   kycDot: {
     position: 'absolute', top: 0, right: 0,
     width: 10, height: 10, borderRadius: 5,

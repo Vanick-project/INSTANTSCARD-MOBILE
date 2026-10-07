@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Colors, Radii, FontSizes, FontWeights, Spacing } from '../../utils/tokens';
+import { BrandGradient, Colors, Radii, FontSizes, FontWeights, Spacing } from '../../utils/tokens';
 import type { VirtualCard } from '../../hooks/useQueries';
 
 interface Props {
@@ -15,8 +15,8 @@ export function VirtualCardDisplay({ card, onPress }: Props) {
   const isFrozen = card.status === 'frozen';
 
   const gradientColors: [string, string, string] = isVisa
-    ? ['#141F33', '#0D1828', '#0A1628']
-    : ['#00C896', '#009970', '#006B4A'];
+    ? [...BrandGradient.visaCard]
+    : [...BrandGradient.instantCard];
 
   return (
     <Pressable onPress={onPress} style={({ pressed }) => [{ opacity: pressed ? 0.92 : 1 }]}>

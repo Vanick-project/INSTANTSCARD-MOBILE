@@ -96,7 +96,7 @@ export default function KYCScreen() {
             <React.Fragment key={i}>
               <View style={styles.stepCell}>
                 <View style={[styles.stepNum, i === 0 && styles.stepNumDone, i === 1 && styles.stepNumActive]}>
-                  <Text style={[styles.stepNumText, i === 0 && { color: Colors.bg }, i === 1 && { color: Colors.brand }]}>
+                  <Text style={[styles.stepNumText, i === 0 && { color: Colors.brandOnBrand }, i === 1 && { color: Colors.brand }]}>
                     {i < 0 ? '✓' : i + 1}
                   </Text>
                 </View>
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
   consentRow:  { flexDirection: 'row', alignItems: 'flex-start', gap: Spacing.sm, marginBottom: Spacing.lg },
   checkbox:    { width: 22, height: 22, borderRadius: 6, borderWidth: 1.5, borderColor: Colors.b2, alignItems: 'center', justifyContent: 'center', marginTop: 1 },
   checkboxOn:  { backgroundColor: Colors.brand, borderColor: Colors.brand },
-  checkboxTick:{ color: Colors.bg, fontSize: 13, fontWeight: FontWeights.bold },
+  checkboxTick:{ color: Colors.brandOnBrand, fontSize: 13, fontWeight: FontWeights.bold },
   consentText: { flex: 1, color: Colors.text2, fontSize: FontSizes.sm, lineHeight: 19 },
   header:      { flexDirection: 'row', alignItems: 'center', padding: Spacing.xl, gap: 14 },
   backBtn:     { width: 38, height: 38, borderRadius: 12, backgroundColor: Colors.s2, alignItems: 'center', justifyContent: 'center' },

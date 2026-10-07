@@ -385,7 +385,7 @@ const s = StyleSheet.create({
     borderRadius: Radii.md, borderWidth: 1, borderColor: Colors.b2,
     padding: Spacing.md, alignItems: 'center', minWidth: 104, gap: 6,
   },
-  cardOn: { borderColor: Colors.brand, backgroundColor: 'rgba(0,200,150,0.08)' },
+  cardOn: { borderColor: Colors.brand, backgroundColor: Colors.brandLight },
   badge: { paddingHorizontal: 8, paddingVertical: 3, borderRadius: 5 },
   badgeTxt: { fontSize: 10, fontWeight: FontWeights.bold },
   cardName: { color: Colors.text2, fontSize: FontSizes.xs },

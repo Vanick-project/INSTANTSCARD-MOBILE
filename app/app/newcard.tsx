@@ -292,7 +292,7 @@ const styles = StyleSheet.create({
   procTitle: { fontSize: FontSizes['2xl'], fontWeight: FontWeights.bold, color: Colors.text1, marginBottom: Spacing.sm, textAlign: 'center' },
   procSub:   { fontSize: FontSizes.md, color: Colors.text2, textAlign: 'center', lineHeight: 22 },
 
-  revealCard: { backgroundColor: '#141F33', borderRadius: Radii.xxl, padding: Spacing.xxl, borderWidth: 0.5, borderColor: Colors.b2, marginBottom: Spacing.md },
+  revealCard: { backgroundColor: Colors.bgElevated, borderRadius: Radii.xxl, padding: Spacing.xxl, borderWidth: 0.5, borderColor: Colors.b2, marginBottom: Spacing.md },
   revealChip: { width: 38, height: 26, backgroundColor: 'rgba(255,200,50,0.28)', borderRadius: 5, marginBottom: Spacing.xl, borderWidth: 0.5, borderColor: 'rgba(255,200,50,0.4)' },
   revealPan:  { fontSize: FontSizes.lg, letterSpacing: 3, color: Colors.text1, marginBottom: Spacing.xl, fontWeight: FontWeights.medium },
   revealRow:  { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' },

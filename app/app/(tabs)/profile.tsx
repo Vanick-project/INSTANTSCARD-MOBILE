@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.5, borderColor: Colors.b1, padding: Spacing.xl,
   },
   avatar:     { width: 60, height: 60, borderRadius: 30, backgroundColor: Colors.brand, alignItems: 'center', justifyContent: 'center' },
-  avatarText: { fontSize: FontSizes.xl, fontWeight: FontWeights.bold, color: Colors.bg },
+  avatarText: { fontSize: FontSizes.xl, fontWeight: FontWeights.bold, color: Colors.brandOnBrand },
   userName:   { fontSize: FontSizes.lg, fontWeight: FontWeights.bold, color: Colors.text1, marginBottom: 3 },
   userPhone:  { fontSize: FontSizes.sm, color: Colors.text3, marginBottom: 2 },
   userCountry:{ fontSize: FontSizes.xs, color: Colors.text3 },

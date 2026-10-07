@@ -5,19 +5,21 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const Colors = {
-  // Brand — Instantcards logo (forest green + gold accent)
-  brand:       '#1B5E38',
+  // Brand — Instantcards logo (forest green + gold chain accent)
+  brand:       '#1A5638',
   brandGold:   '#C9A227',
   brandDark:   '#0F3D24',
   brandDeep:   '#0A2A18',
-  brandLight:  'rgba(27,94,56,0.14)',
-  brandBorder: 'rgba(27,94,56,0.45)',
+  brandLight:  'rgba(26,86,56,0.16)',
+  brandBorder: 'rgba(26,86,56,0.48)',
+  brandOnBrand:'#FFFFFF', // text/icons on brand fills
 
-  // Backgrounds
-  bg:       '#0A1628',   // app background
-  bgCard:   '#111E33',   // elevated surfaces
-  bgInput:  '#162236',   // input fields
-  bgSheet:  '#0F1A2E',   // bottom sheets
+  // Backgrounds — dark UI with subtle green undertone (matches logo green)
+  bg:       '#0B1410',
+  bgCard:   '#101F18',
+  bgElevated:'#132A1F', // card panels, reveal surfaces
+  bgInput:  '#152820',
+  bgSheet:  '#0E1A14',
 
   // Surface overlays (use on bg)
   s1: 'rgba(255,255,255,0.04)',
@@ -36,8 +38,8 @@ export const Colors = {
   text4: 'rgba(255,255,255,0.22)',
 
   // Semantic
-  success:     '#1B5E38',
-  successBg:   'rgba(27,94,56,0.14)',
+  success:     '#1A5638',
+  successBg:   'rgba(26,86,56,0.16)',
   danger:      '#E24B4A',
   dangerBg:    'rgba(226,75,74,0.12)',
   warning:     '#EF9F27',
@@ -53,6 +55,21 @@ export const Colors = {
   wave:   '#1E90FF',
   airtel: '#E60000',
   mpesa:  '#00A550',
+} as const;
+
+/** Gradients aligned with logo green (and gold highlights where used). */
+export const BrandGradient = {
+  wallet:     ['#2D7A4F', '#1A5638', '#0F3D24'],
+  splash:     ['#0B1410', '#0F3D24', '#0B1410'],
+  instantCard:['#2D7A4F', '#1A5638', '#0F3D24'],
+  visaCard:   ['#152820', '#101F18', '#0B1410'],
+} as const;
+
+/** Native splash / Android resource hex (no # prefix in XML). */
+export const BrandHex = {
+  primary:   '1A5638',
+  background:'0B1410',
+  gold:      'C9A227',
 } as const;
 
 export const Spacing = {

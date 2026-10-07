@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useTranslation } from 'react-i18next';
-import { Colors, Radii, Spacing, FontSizes, FontWeights } from '../../utils/tokens';
+import { BrandGradient, Colors, Radii, Spacing, FontSizes, FontWeights } from '../../utils/tokens';
 import type { Wallet } from '../../hooks/useQueries';
 
 interface Props {
@@ -21,7 +21,7 @@ export function WalletBand({ wallet, loading, onTopUp, onNewCard }: Props) {
 
   return (
     <LinearGradient
-      colors={['#00C896', '#009970', '#006B4A']}
+      colors={[...BrandGradient.wallet]}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={styles.band}
@@ -38,7 +38,8 @@ export function WalletBand({ wallet, loading, onTopUp, onNewCard }: Props) {
             {wallet ? formatBalance(wallet.balance, wallet.currency) : '—'}
           </Text>
           <Text style={styles.currency}>
-            {wallet?.currency === 'XOF' ? 'Franc CFA (XOF)' :
+            {wallet?.currency === 'XAF' ? 'Franc CFA (XAF)' :
+             wallet?.currency === 'XOF' ? 'Franc CFA (XOF)' :
              wallet?.currency === 'GHS' ? 'Ghana Cedi (GHS)' :
              wallet?.currency === 'NGN' ? 'Naira (NGN)' :
              wallet?.currency === 'KES' ? 'Kenyan Shilling (KES)' :
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
   actions: { flexDirection: 'row', gap: 10, position: 'relative', zIndex: 2 },
   btnLight:{ flex: 1, backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: Radii.md, paddingVertical: 12, alignItems: 'center' },
   btnLightText: { color: '#fff', fontWeight: FontWeights.semibold, fontSize: FontSizes.md },
-  btnDark: { flex: 1, backgroundColor: 'rgba(10,22,40,0.6)', borderRadius: Radii.md, paddingVertical: 12, alignItems: 'center' },
+  btnDark: { flex: 1, backgroundColor: 'rgba(15,61,36,0.55)', borderRadius: Radii.md, paddingVertical: 12, alignItems: 'center' },
   btnDarkText:  { color: '#fff', fontWeight: FontWeights.semibold, fontSize: FontSizes.md },
 
   // TransactionRow

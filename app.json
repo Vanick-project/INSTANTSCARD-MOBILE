@@ -21,7 +21,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#1B5E38"
+        "backgroundColor": "#1A5638"
       },
       "package": "com.instantcards.app",
       "versionCode": 1,
@@ -39,14 +39,14 @@
         {
           "image": "./assets/splash.png",
           "resizeMode": "contain",
-          "backgroundColor": "#1B5E38"
+          "backgroundColor": "#0B1410"
         }
       ],
       [
         "expo-notifications",
         {
           "icon": "./assets/notification-icon.png",
-          "color": "#1B5E38",
+          "color": "#1A5638",
           "sounds": []
         }
       ]

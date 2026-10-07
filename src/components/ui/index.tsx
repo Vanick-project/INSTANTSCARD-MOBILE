@@ -35,7 +35,7 @@ export function Button({
   }[variant];
 
   const textColor: TextStyle = {
-    primary:   { color: Colors.bg },
+    primary:   { color: Colors.brandOnBrand },
     secondary: { color: Colors.text1 },
     danger:    { color: Colors.danger },
     ghost:     { color: Colors.text2 },
@@ -58,7 +58,7 @@ export function Button({
       {...rest}
     >
       {loading ? (
-        <ActivityIndicator color={variant === 'primary' ? Colors.bg : Colors.brand} size="small" />
+        <ActivityIndicator color={variant === 'primary' ? Colors.brandOnBrand : Colors.brand} size="small" />
       ) : (
         <>
           {icon && <View style={{ marginRight: 8 }}>{icon}</View>}
@@ -276,7 +276,7 @@ export function Notice({
     info:    { bg: Colors.infoBg,    fg: Colors.info },
     warning: { bg: Colors.warningBg, fg: Colors.warning },
     danger:  { bg: Colors.dangerBg,  fg: Colors.danger },
-    success: { bg: 'rgba(0,200,150,0.12)', fg: Colors.brand },
+    success: { bg: Colors.successBg, fg: Colors.brand },
   }[tone];
 
   return (

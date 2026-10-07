@@ -1,3 +1,14 @@
 cd android
 .\gradlew clean
 .\gradlew assembleRelease
+
+
+
+Remove-Item -Recurse -Force android\.cxx -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force android\app\.cxx -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force android\build -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force android\app\build -ErrorAction SilentlyContinue
+
+cd android
+.\gradlew clean
+.\gradlew assembleRelease

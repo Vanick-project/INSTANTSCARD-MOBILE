@@ -6,7 +6,7 @@ import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Button } from '../../src/components/ui';
 import { BrandLogo } from '../../src/components/BrandLogo';
-import { Colors, Spacing, FontSizes, FontWeights, Radii } from '../../src/utils/tokens';
+import { BrandGradient, Colors, Spacing, FontSizes, FontWeights, Radii } from '../../src/utils/tokens';
 
 const { width } = Dimensions.get('window');
 
@@ -16,7 +16,7 @@ export default function SplashScreen() {
 
   return (
     <LinearGradient
-      colors={['#0A1628', '#0F3D24', '#0A1628']}
+      colors={[...BrandGradient.splash]}
       style={styles.container}
     >
       {/* Visual */}
@@ -36,7 +36,7 @@ export default function SplashScreen() {
         </View>
         <View style={[styles.floatBadge, { bottom: 56, left: width * 0.04 }]}>
           <Text style={styles.floatLabel}>Solde</Text>
-          <Text style={styles.floatValue}>XOF 25 000</Text>
+          <Text style={styles.floatValue}>XAF 25 000</Text>
         </View>
       </View>
 
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   logoWrap: { zIndex: 2 },
   floatBadge: {
     position: 'absolute',
-    backgroundColor: 'rgba(15,25,45,0.88)',
+    backgroundColor: 'rgba(16,31,24,0.92)',
     borderWidth: 0.5,
     borderColor: Colors.b2,
     borderRadius: Radii.lg,
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     lineHeight: 36,
     marginBottom: Spacing.md,
   },
-  accent: { color: Colors.brand },
+  accent: { color: Colors.brandGold },
   sub: {
     fontSize: FontSizes.md,
     color: Colors.text2,

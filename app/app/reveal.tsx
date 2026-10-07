@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   pinPrompt:   { fontSize: FontSizes.xl, fontWeight: FontWeights.bold, color: Colors.text1, textAlign: 'center' },
   loading:     { color: Colors.text3, fontSize: FontSizes.sm, marginTop: Spacing.xl },
 
-  cardPreview: { backgroundColor: '#141F33', borderRadius: Radii.xxl, padding: Spacing.xxl, borderWidth: 0.5, borderColor: Colors.b2, marginBottom: Spacing.md },
+  cardPreview: { backgroundColor: Colors.bgElevated, borderRadius: Radii.xxl, padding: Spacing.xxl, borderWidth: 0.5, borderColor: Colors.b2, marginBottom: Spacing.md },
   chip:        { width: 38, height: 26, backgroundColor: 'rgba(255,200,50,0.28)', borderRadius: 5, marginBottom: Spacing.xl, borderWidth: 0.5, borderColor: 'rgba(255,200,50,0.4)' },
   cardPan:     { fontSize: FontSizes.lg, letterSpacing: 3, color: Colors.text1, marginBottom: Spacing.xl, fontWeight: FontWeights.medium },
   cardBot:     { flexDirection: 'row', justifyContent: 'space-between' },

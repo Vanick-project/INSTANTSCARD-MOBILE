@@ -155,7 +155,7 @@ export default function CardsScreen() {
                   style={[styles.actionBtn, styles.actionBtnPrimary]}
                   onPress={() => router.push('/app/newcard')}
                 >
-                  <Text style={[styles.actionBtnText, { color: Colors.bg, fontWeight: FontWeights.semibold }]}>
+                  <Text style={[styles.actionBtnText, { color: Colors.brandOnBrand, fontWeight: FontWeights.semibold }]}>
                     + Nouvelle
                   </Text>
                 </TouchableOpacity>
