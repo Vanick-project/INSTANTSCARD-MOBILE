@@ -4,7 +4,9 @@ import {
   useQuery, useMutation, useQueryClient, UseQueryOptions,
 } from '@tanstack/react-query';
 import api from '../services/apiClient';
-import { Market, FALLBACK_MARKETS, FALLBACK_FEE_BPS } from '../config/markets';
+import {
+  Market, FALLBACK_MARKETS, FALLBACK_FEE_BPS, FALLBACK_CARD_GENERATION_FEE_XAF,
+} from '../config/markets';
 
 export const QK = {
   wallet:       ['wallet']                    as const,
@@ -13,6 +15,7 @@ export const QK = {
   card:         (id: string) => ['card', id]  as const,
   me:           ['me']                        as const,
   markets:      ['markets']                   as const,
+  appFees:      (country?: string) => ['appFees', country] as const,
   payoutMethods:(country?: string) => ['payoutMethods', country] as const,
   payouts:      ['payouts']                   as const,
   payout:       (ref: string) => ['payout', ref] as const,
@@ -105,6 +108,42 @@ export interface Payout {
  * payout provider is configured, so the app hides the entry point rather than
  * offering an action that is guaranteed to fail.
  */
+export interface AppFees {
+  country: string;
+  currency: string;
+  cardGenerationFee: number;
+  topupFeeBps: number;
+  payout: {
+    country: string;
+    currency: string | null;
+    minAmount: number;
+    maxAmount: number;
+    feeBps: number;
+  };
+}
+
+export function useAppFees(country?: string) {
+  const code = country ?? 'CM';
+  return useQuery<AppFees>({
+    queryKey: QK.appFees(code),
+    queryFn: async () => (await api.getAppFees(code)).data.data as AppFees,
+    staleTime: 30 * 60_000,
+    placeholderData: {
+      country: code,
+      currency: 'XAF',
+      cardGenerationFee: FALLBACK_CARD_GENERATION_FEE_XAF,
+      topupFeeBps: FALLBACK_FEE_BPS,
+      payout: {
+        country: code,
+        currency: 'XAF',
+        minAmount: 1000,
+        maxAmount: 500_000,
+        feeBps: 150,
+      },
+    },
+  });
+}
+
 export function usePayoutMethods(country?: string) {
   return useQuery<PayoutMethods>({
     queryKey: QK.payoutMethods(country),

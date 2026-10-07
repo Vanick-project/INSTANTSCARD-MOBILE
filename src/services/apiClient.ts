@@ -113,6 +113,9 @@ export const api = {
   getMarkets: () =>
     apiClient.get('/config/markets'),
 
+  getAppFees: (country?: string) =>
+    apiClient.get('/config/fees', { params: country ? { country } : undefined }),
+
   // ── Auth ────────────────────────────────────────────────────────────────────
   register: (body: {
     firstName: string; lastName: string; phone: string;

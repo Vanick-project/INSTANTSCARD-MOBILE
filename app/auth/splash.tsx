@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Button } from '../../src/components/ui';
+import { BrandLogo } from '../../src/components/BrandLogo';
 import { Colors, Spacing, FontSizes, FontWeights, Radii } from '../../src/utils/tokens';
 
 const { width } = Dimensions.get('window');
@@ -15,7 +16,7 @@ export default function SplashScreen() {
 
   return (
     <LinearGradient
-      colors={['#0A1628', '#0D2040', '#0A2A20']}
+      colors={['#0A1628', '#0F3D24', '#0A1628']}
       style={styles.container}
     >
       {/* Visual */}
@@ -23,9 +24,7 @@ export default function SplashScreen() {
         {[280, 220, 160].map((size, i) => (
           <View key={i} style={[styles.ring, { width: size, height: size, borderRadius: size / 2, opacity: 0.15 + i * 0.1 }]} />
         ))}
-        <View style={styles.centerIcon}>
-          <Text style={styles.iconEmoji}>💳</Text>
-        </View>
+        <BrandLogo width={Math.min(width * 0.72, 280)} style={styles.logoWrap} />
 
         {/* Floating badges */}
         <View style={[styles.floatBadge, { top: 58, right: width * 0.08 }]}>
@@ -85,13 +84,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.brand,
   },
-  centerIcon: {
-    width: 80, height: 80, borderRadius: 22,
-    backgroundColor: Colors.brand,
-    alignItems: 'center', justifyContent: 'center',
-    zIndex: 2,
-  },
-  iconEmoji: { fontSize: 36 },
+  logoWrap: { zIndex: 2 },
   floatBadge: {
     position: 'absolute',
     backgroundColor: 'rgba(15,25,45,0.88)',

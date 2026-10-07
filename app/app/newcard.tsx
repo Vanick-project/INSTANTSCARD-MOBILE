@@ -6,8 +6,10 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { useGenerateCard, GeneratedCardSecret } from '../../src/hooks/useQueries';
-import { useWallet } from '../../src/hooks/useQueries';
+import {
+  useGenerateCard, GeneratedCardSecret, useWallet, useMe, useAppFees,
+} from '../../src/hooks/useQueries';
+import { FALLBACK_CARD_GENERATION_FEE_XAF } from '../../src/config/markets';
 import { Button } from '../../src/components/ui';
 import { Colors, Spacing, FontSizes, FontWeights, Radii } from '../../src/utils/tokens';
 import * as Clipboard from 'expo-clipboard';
@@ -16,12 +18,14 @@ import * as Haptics from 'expo-haptics';
 const PURPOSES = ['shopping','subscriptions','travel','freelance','gaming','other'] as const;
 type Purpose = typeof PURPOSES[number];
 
-const SPENDING_LIMITS = [5000, 10000, 25000, 50000, 100000, 200000];
+const SPENDING_LIMITS_XAF = [10_000, 25_000, 50_000, 100_000, 200_000, 500_000];
 
 export default function NewCardScreen() {
   const router    = useRouter();
   const { t }     = useTranslation();
   const { data: wallet } = useWallet();
+  const { data: me } = useMe();
+  const { data: appFees } = useAppFees(me?.country ?? 'CM');
   const mutation  = useGenerateCard();
 
   const [network, setNetwork]   = useState<'visa' | 'mastercard'>('visa');
@@ -30,8 +34,10 @@ export default function NewCardScreen() {
   const [step, setStep]         = useState<'form' | 'generating' | 'done'>('form');
   const [generated, setGenerated] = useState<GeneratedCardSecret | null>(null);
 
-  const spendingLimit = SPENDING_LIMITS[limitIdx];
-  const GEN_FEE = 500;
+  const spendingLimits = SPENDING_LIMITS_XAF;
+  const spendingLimit = spendingLimits[limitIdx];
+  const currency = wallet?.currency ?? appFees?.currency ?? 'XAF';
+  const GEN_FEE = appFees?.cardGenerationFee ?? FALLBACK_CARD_GENERATION_FEE_XAF;
   const fmt = (n: number) => new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(n);
 
   const togglePurpose = (p: Purpose) => {
@@ -43,7 +49,7 @@ export default function NewCardScreen() {
 
   const handleGenerate = async () => {
     if ((wallet?.balance ?? 0) < GEN_FEE) {
-      Alert.alert('Solde insuffisant', `Frais de génération : ${GEN_FEE} ${wallet?.currency ?? 'XOF'}. Rechargez votre portefeuille.`);
+      Alert.alert('Solde insuffisant', `Frais de génération : ${GEN_FEE} ${currency}. Rechargez votre portefeuille.`);
       return;
     }
     setStep('generating');
@@ -121,6 +127,8 @@ export default function NewCardScreen() {
     );
   }
 
+  const feeLabel = `Frais : ${fmt(GEN_FEE)} ${currency}`;
+
   // ── Form ──────────────────────────────────────────────────────────────────
   return (
     <SafeAreaView style={styles.container}>
@@ -141,12 +149,14 @@ export default function NewCardScreen() {
             label="Visa Virtual"
             badge="VISA"
             badgeStyle={{ backgroundColor: 'white', color: '#1A1F71', fontStyle: 'italic' }}
+            feeLabel={feeLabel}
           />
           <NetworkOption
             selected={network === 'mastercard'}
             onPress={() => setNetwork('mastercard')}
             label="Mastercard Virtual"
             isMC
+            feeLabel={feeLabel}
           />
         </View>
 
@@ -174,7 +184,7 @@ export default function NewCardScreen() {
         </View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: Spacing.xxl }}>
           <View style={{ flexDirection: 'row', gap: 8 }}>
-            {SPENDING_LIMITS.map((l, i) => (
+            {spendingLimits.map((l, i) => (
               <TouchableOpacity
                 key={l}
                 style={[styles.limitChip, limitIdx === i && styles.limitChipActive]}
@@ -189,13 +199,13 @@ export default function NewCardScreen() {
         {/* Fee notice */}
         <View style={styles.feeBox}>
           <Text style={styles.feeText}>
-            <Text style={{ color: Colors.brand, fontWeight: FontWeights.semibold }}>Frais de génération : {GEN_FEE} {wallet?.currency ?? 'XOF'}</Text>
-            {'\n'}Solde actuel : {fmt(wallet?.balance ?? 0)} {wallet?.currency ?? 'XOF'} · La carte sera active immédiatement.
+            <Text style={{ color: Colors.brand, fontWeight: FontWeights.semibold }}>Frais de génération : {GEN_FEE} {currency}</Text>
+            {'\n'}Solde actuel : {fmt(wallet?.balance ?? 0)} {currency} · La carte sera active immédiatement.
           </Text>
         </View>
 
         <Button
-          label={`Générer · ${GEN_FEE} ${wallet?.currency ?? 'XOF'}`}
+          label={`Générer · ${GEN_FEE} ${currency}`}
           onPress={handleGenerate}
           loading={mutation.isPending}
         />
@@ -204,7 +214,7 @@ export default function NewCardScreen() {
   );
 }
 
-function NetworkOption({ selected, onPress, label, badge, badgeStyle, isMC }: any) {
+function NetworkOption({ selected, onPress, label, badge, badgeStyle, isMC, feeLabel }: any) {
   return (
     <TouchableOpacity
       style={[styles.networkOption, selected && styles.networkOptionActive]}
@@ -222,7 +232,7 @@ function NetworkOption({ selected, onPress, label, badge, badgeStyle, isMC }: an
         </View>
       )}
       <Text style={styles.networkLabel}>{label}</Text>
-      <Text style={styles.networkFee}>Frais : 500 XOF</Text>
+      <Text style={styles.networkFee}>{feeLabel}</Text>
     </TouchableOpacity>
   );
 }

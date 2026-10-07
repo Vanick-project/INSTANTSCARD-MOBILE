@@ -5,12 +5,13 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const Colors = {
-  // Brand
-  brand:       '#00C896',
-  brandDark:   '#009970',
-  brandDeep:   '#006B4A',
-  brandLight:  'rgba(0,200,150,0.12)',
-  brandBorder: 'rgba(0,200,150,0.35)',
+  // Brand — Instantcards logo (forest green + gold accent)
+  brand:       '#1B5E38',
+  brandGold:   '#C9A227',
+  brandDark:   '#0F3D24',
+  brandDeep:   '#0A2A18',
+  brandLight:  'rgba(27,94,56,0.14)',
+  brandBorder: 'rgba(27,94,56,0.45)',
 
   // Backgrounds
   bg:       '#0A1628',   // app background
@@ -35,8 +36,8 @@ export const Colors = {
   text4: 'rgba(255,255,255,0.22)',
 
   // Semantic
-  success:     '#00C896',
-  successBg:   'rgba(0,200,150,0.12)',
+  success:     '#1B5E38',
+  successBg:   'rgba(27,94,56,0.14)',
   danger:      '#E24B4A',
   dangerBg:    'rgba(226,75,74,0.12)',
   warning:     '#EF9F27',

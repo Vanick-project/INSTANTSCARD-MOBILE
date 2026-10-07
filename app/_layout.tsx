@@ -12,14 +12,24 @@ import React, { useEffect } from 'react';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { isRunningInExpoGo } from 'expo';
 import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet } from 'react-native';
-import * as Notifications from 'expo-notifications';
 import * as Linking from 'expo-linking';
 
 import { useAuthStore } from '../src/stores/authStore';
 import api from '../src/services/apiClient';
 import { Colors } from '../src/utils/tokens';
+
+type NotificationsModule = typeof import('expo-notifications');
+
+// SDK 53 removed Android remote push from Expo Go. Importing expo-notifications
+// there throws during module init and takes the whole root layout down with it.
+// Development and production builds still load the module normally.
+const Notifications: NotificationsModule | null =
+  Platform.OS === 'android' && isRunningInExpoGo()
+    ? null
+    : require('expo-notifications');
 
 // Configure how notifications appear while the app is in the foreground.
 //
@@ -28,14 +38,16 @@ import { Colors } from '../src/utils/tokens';
 // centre). The old field is gone from NotificationBehavior, so the previous
 // version of this object failed type-check and left the two required fields
 // undefined at runtime.
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowBanner: true,
-    shouldShowList:   true,
-    shouldPlaySound:  true,
-    shouldSetBadge:   false,
-  }),
-});
+if (Notifications) {
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowBanner: true,
+      shouldShowList:   true,
+      shouldPlaySound:  true,
+      shouldSetBadge:   false,
+    }),
+  });
+}
 
 // ── React Query client ────────────────────────────────────────────────────────
 const queryClient = new QueryClient({
@@ -72,8 +84,9 @@ function AuthGuard() {
 
 // ── Push notification registration ───────────────────────────────────────────
 async function registerPushToken() {
-  // Notifications only work on physical devices and registered simulators
-  if (Platform.OS === 'web') return;
+  // Notifications only work on physical devices and registered simulators.
+  // Expo Go on Android cannot obtain a remote push token (SDK 53+).
+  if (!Notifications || Platform.OS === 'web') return;
 
   try {
     const { status: existing } = await Notifications.getPermissionsAsync();

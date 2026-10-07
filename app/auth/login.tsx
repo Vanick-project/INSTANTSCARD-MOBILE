@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { Button, Input, PinInput } from '../../src/components/ui';
 import { useAuthStore } from '../../src/stores/authStore';
 import api from '../../src/services/apiClient';
+import { BrandLogo } from '../../src/components/BrandLogo';
 import { Colors, Spacing, FontSizes, FontWeights, Radii } from '../../src/utils/tokens';
 
 export default function LoginScreen() {
@@ -53,6 +54,7 @@ export default function LoginScreen() {
       </View>
 
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
+        <BrandLogo width={200} style={{ marginBottom: Spacing.xl }} padded={false} />
         {step === 'phone' ? (
           <>
             <Text style={styles.title}>{t('auth.loginTitle')}</Text>

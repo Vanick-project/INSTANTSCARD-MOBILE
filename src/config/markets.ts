@@ -74,9 +74,11 @@ export function carriersFor(market: Market | undefined): CarrierDisplay[] {
  * surface that rather than silently pretending this is the full list.
  */
 export const FALLBACK_MARKETS: Market[] = [
-  { country: 'GH', currency: 'GHS', dialCode: '233', minAmount: 1,
-    networks: ['MTN', 'VODAFONE', 'AIRTELTIGO'] },
+  { country: 'CM', currency: 'XAF', dialCode: '237', minAmount: 100,
+    networks: ['MTN', 'ORANGE'] },
 ];
 
 /** Default top-up fee in basis points, used only until the server responds. */
 export const FALLBACK_FEE_BPS = 150;
+
+export const FALLBACK_CARD_GENERATION_FEE_XAF = 2000;

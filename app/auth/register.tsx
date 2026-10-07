@@ -9,9 +9,11 @@ import { useTranslation } from 'react-i18next';
 import { Button, Input } from '../../src/components/ui';
 import { useAuthStore } from '../../src/stores/authStore';
 import api from '../../src/services/apiClient';
+import { BrandLogo } from '../../src/components/BrandLogo';
 import { Colors, Spacing, FontSizes, FontWeights, Radii } from '../../src/utils/tokens';
 
 const COUNTRIES = [
+  { code: 'CM', flag: '🇨🇲', name: 'Cameroun',      dial: '+237', currency: 'XAF' },
   { code: 'CI', flag: '🇨🇮', name: "Côte d'Ivoire", dial: '+225', currency: 'XOF' },
   { code: 'SN', flag: '🇸🇳', name: 'Sénégal',       dial: '+221', currency: 'XOF' },
   { code: 'ML', flag: '🇲🇱', name: 'Mali',          dial: '+223', currency: 'XOF' },
@@ -21,7 +23,6 @@ const COUNTRIES = [
   { code: 'KE', flag: '🇰🇪', name: 'Kenya',         dial: '+254', currency: 'KES' },
   { code: 'UG', flag: '🇺🇬', name: 'Uganda',        dial: '+256', currency: 'UGX' },
   { code: 'TZ', flag: '🇹🇿', name: 'Tanzania',      dial: '+255', currency: 'TZS' },
-  { code: 'CM', flag: '🇨🇲', name: 'Cameroun',      dial: '+237', currency: 'XAF' },
 ];
 
 export default function RegisterScreen() {
@@ -77,6 +78,7 @@ export default function RegisterScreen() {
       </View>
 
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
+        <BrandLogo width={180} style={{ marginBottom: Spacing.lg }} padded={false} />
         <View style={styles.row}>
           <Input containerStyle={{ flex: 1 }} label={t('auth.firstName')} value={form.firstName} onChangeText={(v) => setForm(p => ({ ...p, firstName: v }))} error={errors.firstName} placeholder="Kofi" />
           <Input containerStyle={{ flex: 1 }} label={t('auth.lastName')}  value={form.lastName}  onChangeText={(v) => setForm(p => ({ ...p, lastName: v  }))} error={errors.lastName}  placeholder="Mensah" />
