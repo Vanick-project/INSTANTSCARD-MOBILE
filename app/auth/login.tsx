@@ -54,7 +54,7 @@ export default function LoginScreen() {
       </View>
 
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
-        <BrandLogo width={200} style={{ marginBottom: Spacing.xl }} padded={false} />
+        <BrandLogo width={200} style={{ marginBottom: Spacing.xl }} />
         {step === 'phone' ? (
           <>
             <Text style={styles.title}>{t('auth.loginTitle')}</Text>

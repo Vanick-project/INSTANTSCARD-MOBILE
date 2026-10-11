@@ -4,31 +4,36 @@ import { Tabs } from 'expo-router';
 import { View, Text, StyleSheet } from 'react-native';
 import { Colors, FontSizes, FontWeights } from '../../../src/utils/tokens';
 
+function tabIconColor(active: boolean) {
+  return active ? Colors.brand : Colors.text2;
+}
+
 // ── Icon components (SVG-free, pure View) ─────────────────────────────────────
 const HomeIcon  = ({ active }: { active: boolean }) => (
   <View style={[ico.base, active && ico.active]}>
-    <Text style={{ fontSize: 18 }}>⌂</Text>
+    <Text style={[ico.glyph, { fontSize: 20, color: tabIconColor(active) }]}>⌂</Text>
   </View>
 );
 const CardIcon  = ({ active }: { active: boolean }) => (
   <View style={[ico.base, active && ico.active]}>
-    <Text style={{ fontSize: 16 }}>▭</Text>
+    <Text style={[ico.glyph, { fontSize: 18, color: tabIconColor(active) }]}>▭</Text>
   </View>
 );
 const HistoryIcon = ({ active }: { active: boolean }) => (
   <View style={[ico.base, active && ico.active]}>
-    <Text style={{ fontSize: 16 }}>≡</Text>
+    <Text style={[ico.glyph, { fontSize: 18, color: tabIconColor(active) }]}>≡</Text>
   </View>
 );
 const ProfileIcon = ({ active }: { active: boolean }) => (
   <View style={[ico.base, active && ico.active]}>
-    <Text style={{ fontSize: 16 }}>◯</Text>
+    <Text style={[ico.glyph, { fontSize: 18, color: tabIconColor(active) }]}>◯</Text>
   </View>
 );
 
 const ico = StyleSheet.create({
   base:   { alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: 10 },
-  active: { backgroundColor: `${Colors.brand}18` },
+  active: { backgroundColor: `${Colors.brand}28` },
+  glyph:  { fontWeight: FontWeights.semibold, includeFontPadding: false },
 });
 
 export default function TabsLayout() {
@@ -45,7 +50,7 @@ export default function TabsLayout() {
           paddingTop: 8,
         },
         tabBarActiveTintColor:   Colors.brand,
-        tabBarInactiveTintColor: Colors.text3,
+        tabBarInactiveTintColor: Colors.text2,
         tabBarLabelStyle: {
           fontSize: FontSizes.xs,
           fontWeight: FontWeights.medium,

@@ -19,8 +19,8 @@ function QuickAction({
 }: { icon: string; label: string; color: string; onPress: () => void }) {
   return (
     <TouchableOpacity style={styles.qaCell} onPress={onPress} activeOpacity={0.72}>
-      <View style={[styles.qaIcon, { backgroundColor: color + '18' }]}>
-        <Text style={{ fontSize: 20 }}>{icon}</Text>
+      <View style={[styles.qaIcon, { backgroundColor: color + '28' }]}>
+        <Text style={[styles.qaIconGlyph, { color }]}>{icon}</Text>
       </View>
       <Text style={styles.qaLabel}>{label}</Text>
     </TouchableOpacity>
@@ -169,6 +169,7 @@ const styles = StyleSheet.create({
   },
   qaCell: { alignItems: 'center', gap: 8 },
   qaIcon: { width: 56, height: 56, borderRadius: 18, alignItems: 'center', justifyContent: 'center' },
+  qaIconGlyph: { fontSize: 22, fontWeight: FontWeights.bold, includeFontPadding: false },
   qaLabel: { fontSize: FontSizes.xs, color: Colors.text2, textAlign: 'center' },
   txnList: { paddingHorizontal: Spacing.xl },
   skeletonRow: {

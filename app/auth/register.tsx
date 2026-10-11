@@ -78,7 +78,7 @@ export default function RegisterScreen() {
       </View>
 
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
-        <BrandLogo width={180} style={{ marginBottom: Spacing.lg }} padded={false} />
+        <BrandLogo width={180} style={{ marginBottom: Spacing.lg }} />
         <View style={styles.row}>
           <Input containerStyle={{ flex: 1 }} label={t('auth.firstName')} value={form.firstName} onChangeText={(v) => setForm(p => ({ ...p, firstName: v }))} error={errors.firstName} placeholder="Kofi" />
           <Input containerStyle={{ flex: 1 }} label={t('auth.lastName')}  value={form.lastName}  onChangeText={(v) => setForm(p => ({ ...p, lastName: v  }))} error={errors.lastName}  placeholder="Mensah" />
