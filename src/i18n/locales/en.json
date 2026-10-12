@@ -42,7 +42,12 @@
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
     "terms": "By creating an account you agree to our Terms of Service and Privacy Policy.",
-    "logout": "Sign out"
+    "logout": "Sign out",
+    "splashHeadlineLine1": "Mobile money,",
+    "splashHeadlineAccent": "ready online.",
+    "splashSub": "Turn mobile money into a virtual VISA or Mastercard — shop worldwide, instantly.",
+    "splashInstant": "Instant",
+    "splashBalance": "Balance"
   },
   "home": {
     "goodMorning": "Good morning",

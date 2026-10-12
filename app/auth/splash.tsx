@@ -31,11 +31,11 @@ export default function SplashScreen() {
           <Text style={styles.floatLabel}>MTN → VISA</Text>
           <View style={styles.floatRow}>
             <View style={styles.greenDot} />
-            <Text style={styles.floatValue}>Instantané</Text>
+            <Text style={styles.floatValue}>{t('auth.splashInstant')}</Text>
           </View>
         </View>
         <View style={[styles.floatBadge, { bottom: 56, left: width * 0.04 }]}>
-          <Text style={styles.floatLabel}>Solde</Text>
+          <Text style={styles.floatLabel}>{t('auth.splashBalance')}</Text>
           <Text style={styles.floatValue}>XAF 25 000</Text>
         </View>
       </View>
@@ -49,12 +49,10 @@ export default function SplashScreen() {
         </View>
 
         <Text style={styles.headline}>
-          Mobile money,{'\n'}
-          <Text style={styles.accent}>prêt en ligne.</Text>
+          {t('auth.splashHeadlineLine1')}{'\n'}
+          <Text style={styles.accent}>{t('auth.splashHeadlineAccent')}</Text>
         </Text>
-        <Text style={styles.sub}>
-          Transformez votre mobile money en carte virtuelle VISA ou Mastercard — achetez partout dans le monde, instantanément.
-        </Text>
+        <Text style={styles.sub}>{t('auth.splashSub')}</Text>
 
         <Button
           label={t('auth.createAccount')}

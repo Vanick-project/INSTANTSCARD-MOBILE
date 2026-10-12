@@ -11,6 +11,7 @@ import { useWallet, useCards } from '../../../src/hooks/useQueries';
 import { Divider } from '../../../src/components/ui';
 import { Colors, Spacing, FontSizes, FontWeights, Radii } from '../../../src/utils/tokens';
 import { setLanguage, currentLanguage, Language } from '../../../src/i18n';
+import { authEntryPath } from '../../../src/config/featureFlags';
 
 // ── Menu row ──────────────────────────────────────────────────────────────────
 function MenuItem({
@@ -99,7 +100,7 @@ export default function ProfileScreen() {
         { text: t('common.cancel'), style: 'cancel' },
         { text: t('auth.logout'), style: 'destructive', onPress: async () => {
           await logout();
-          router.replace('/auth/splash');
+          router.replace(authEntryPath());
         }},
       ]
     );

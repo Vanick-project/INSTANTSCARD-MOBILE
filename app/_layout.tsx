@@ -19,6 +19,7 @@ import * as Linking from 'expo-linking';
 
 import { useAuthStore } from '../src/stores/authStore';
 import api from '../src/services/apiClient';
+import { authEntryPath } from '../src/config/featureFlags';
 import { Colors } from '../src/utils/tokens';
 
 type NotificationsModule = typeof import('expo-notifications');
@@ -73,7 +74,7 @@ function AuthGuard() {
     const inAuth = segments[0] === 'auth';
 
     if (!token && !inAuth) {
-      router.replace('/auth/splash');
+      router.replace(authEntryPath());
     } else if (token && inAuth) {
       router.replace('/app/(tabs)/home');
     }
